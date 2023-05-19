@@ -1,14 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../provider/AuthProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
-  //   const { user, handleSignout } = useContext(AuthContext);
-  //   const handleLogout = () => {
-  //     handleSignout();
-  //   };
+  const { user, handleSignout } = useContext(AuthContext);
+  const handleLogout = () => {
+    handleSignout();
+  };
 
   return (
     <div>
-      <div className="navbar bg-cyan-50 text-black shadow">
+      <div className="navbar  text-black  font-semibold">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -50,7 +52,7 @@ const Navbar = () => {
           </div>
           <Link to="/">
             <img
-              className="h-12 w-36 md:ml-10"
+              className="h-12 w-36 md:w-36 md:h-12 md:ml-10"
               src="https://www.cornmillcentre.co.uk/wp-content/uploads/2020/03/00011111177.png"
               alt="logo"
             />
@@ -58,14 +60,14 @@ const Navbar = () => {
         </div>
         <div className="navbar-center mx-50% hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-5 ">
-            <li className="">
-              <NavLink to="/">Home</NavLink>
-            </li>
             <li>
               <NavLink to="/all-toys">All Toys</NavLink>
             </li>
             <li>
               <NavLink to="/my-toys">My Toys</NavLink>
+            </li>
+            <li className="">
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
               <NavLink to="/add-toys">Add A Toy</NavLink>
@@ -75,34 +77,33 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className=" md:mr-10 mr-3 ml-auto">
-          <h1 className="btn">Logout</h1>
-          {/* <>
+        <div className=" md:mr-16 mr-5 md:ml-80">
+          <>
             {user ? (
               <>
                 {user.photoURL && (
                   <img
                     title={user.displayName}
-                    className="w-14 h-14 rounded-full border-2 border-sky-400"
+                    className="w-14 h-14 rounded-full border-2 border-yellow-300"
                     src={user?.photoURL}
                     alt=""
                   />
                 )}
                 <button
                   onClick={handleLogout}
-                  className="ml-5 border-none btn text-white bg-gradient-to-r from-cyan-300 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-600 font-medium  text-sm  text-center "
+                  className="ml-5 border-none btn text-white bg-gradient-to-r from-yellow-400 to-blue-300 hover:bg-gradient-to-bl  focus:outline-none  font-medium  text-sm  text-center"
                 >
                   Logout
                 </button>
               </>
             ) : (
               <Link to="/login">
-                <button className="ml-5 border-none btn text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium  text-sm  text-center">
+                <button className="ml-5 border-none btn text-white bg-gradient-to-r from-yellow-400 to-blue-300 hover:bg-gradient-to-bl  focus:outline-none  font-medium  text-sm  text-center">
                   Login
                 </button>
               </Link>
             )}
-          </> */}
+          </>
         </div>
       </div>
     </div>
