@@ -63,7 +63,7 @@ const routes = createBrowserRouter([
         ),
         loader: async ({ params }) =>
           await fetch(
-            `https://fan-vault-toys-server.vercel.app/toy/${params?.id}`
+            `https://toy-marketplace-server-side-alamin0x01.vercel.app/toy/${params?.id}`
           ),
       },
       {
@@ -75,7 +75,7 @@ const routes = createBrowserRouter([
         ),
         loader: async ({ params }) =>
           await fetch(
-            `https://fan-vault-toys-server.vercel.app/toy/${params?.id}`
+            `https://toy-marketplace-server-side-alamin0x01.vercel.app/toy/${params?.id}`
           ),
       },
     ],
