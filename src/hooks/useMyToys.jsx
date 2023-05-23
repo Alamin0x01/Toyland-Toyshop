@@ -16,6 +16,7 @@ const useMyToys = (sort) => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sort]);
 
   return [toys, setToys];

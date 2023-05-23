@@ -14,6 +14,7 @@ const useToys = (page, limit, cetagory, search) => {
 
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, limit, cetagory, search]);
 
   return toys;
