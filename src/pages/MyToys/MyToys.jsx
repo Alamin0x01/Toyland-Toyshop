@@ -25,7 +25,7 @@ const MyToys = () => {
         if (result.isConfirmed) {
           const call = async () => {
             const response = await fetch(
-              `https://fan-vault-toys-server.vercel.app/mytoys/${id}`,
+              `https://toy-marketplace-server-side-alamin0x01.vercel.app/mytoys/${id}`,
               {
                 method: "DELETE",
               }

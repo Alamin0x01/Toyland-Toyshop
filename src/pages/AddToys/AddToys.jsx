@@ -48,7 +48,7 @@ const AddToys = () => {
       setError("");
 
       const response = await fetch(
-        "https://fan-vault-toys-server.vercel.app/toys",
+        "https://toy-marketplace-server-side-alamin0x01.vercel.app/toys",
         {
           method: "POST",
           headers: {
