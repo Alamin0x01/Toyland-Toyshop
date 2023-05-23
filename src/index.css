@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+.bg {
+  min-height: calc(100vh - 60px);
+  background: url(./assets//banner.png) no-repeat right / cover;
+}
+
+.min-h {
+  min-height: calc(100vh - 60px);
+}
+
+.gallary {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item {
+  flex-basis: 400px;
+}
+
+.toygrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}

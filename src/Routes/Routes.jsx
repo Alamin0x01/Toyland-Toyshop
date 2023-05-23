@@ -1,50 +1,85 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../Layout/Main";
+import App from "../App";
 import Home from "../pages/Home/Home";
-import Login from "../pages/Login/Login";
-import Register from "../pages/Register/Register";
-import Blog from "../pages/Blogs/Blog";
-import AddToys from "../pages/AddToys/AddToys";
-import AllToys from "../pages/AllToys/AllToys";
+import Toys from "../pages/Toys/Toys";
+import Blog from "../pages/Blog/Blog";
+import SignIn from "../pages/Signin/SignIn";
+import SignUp from "../pages/Signup/SignUp";
 import MyToys from "../pages/MyToys/MyToys";
-import ErrorPage from "../pages/Error/ErrorPage";
+import AddToys from "../pages/AddToys/AddToys";
+import Error from "../pages/Error/Error";
+import PrivateRoute from "./PrivateRoute";
+import Details from "../pages/Details/Details";
+import UpdateToy from "../pages/UpdateToy/UpdateToy";
 
-const router = createBrowserRouter([
+const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
-    errorElement: <ErrorPage></ErrorPage>,
+    element: <App />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home />,
       },
       {
-        path: "/add-toys",
-        element: <AddToys></AddToys>,
+        path: "toys",
+        element: <Toys />,
       },
       {
-        path: "/all-toys",
-        element: <AllToys></AllToys>,
+        path: "blog",
+        element: <Blog />,
       },
       {
-        path: "/my-toys",
-        element: <MyToys></MyToys>,
+        path: "signin",
+        element: <SignIn />,
       },
       {
-        path: "/login",
-        element: <Login></Login>,
+        path: "signup",
+        element: <SignUp />,
       },
       {
-        path: "/register",
-        element: <Register></Register>,
+        path: "mytoys",
+        element: (
+          <PrivateRoute>
+            <MyToys />
+          </PrivateRoute>
+        ),
       },
       {
-        path: "/blog",
-        element: <Blog></Blog>,
+        path: "addtoy",
+        element: (
+          <PrivateRoute>
+            <AddToys />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "details/:id",
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) =>
+          await fetch(
+            `https://fan-vault-toys-server.vercel.app/toy/${params?.id}`
+          ),
+      },
+      {
+        path: "update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateToy />
+          </PrivateRoute>
+        ),
+        loader: async ({ params }) =>
+          await fetch(
+            `https://fan-vault-toys-server.vercel.app/toy/${params?.id}`
+          ),
       },
     ],
   },
 ]);
 
-export default router;
+export default routes;

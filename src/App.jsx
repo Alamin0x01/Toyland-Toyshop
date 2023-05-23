@@ -1,9 +1,17 @@
-import "./App.css";
+import { Outlet } from "react-router-dom";
+import AppNavbar from "./components/Navbar/AppNavbar";
+import AuthProvider from "./context/AuthProvider";
+import Footer from "./components/Footer/Footer";
+
 function App() {
   return (
-    <>
-      <h1>Vite + React</h1>
-    </>
+    <AuthProvider>
+      <AppNavbar />
+      <div>
+        <Outlet />
+      </div>
+      <Footer />
+    </AuthProvider>
   );
 }
 

@@ -1,30 +1,29 @@
 import { Label, TextInput, Button, Alert } from "flowbite-react";
 
 import useTitle from "../../hooks/useTitle";
-import { useAuth } from "../../context/AuthProvider";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-const AddToys = () => {
-  useTitle("Add Toys");
-  const { user } = useAuth();
+const UpdateToy = () => {
+  useTitle("Update Toys");
   const [error, setError] = useState("");
-
   const MySwal = withReactContent(Swal);
+  const navigate = useNavigate();
 
-  const handleAdd = async (e) => {
+  const data = useLoaderData();
+
+  const handleUpdate = async (e) => {
     e.preventDefault();
 
-    const url = e.target.url.value;
     const title = e.target.title.value;
+    const url = e.target.url.value;
     const discription = e.target.discription.value;
     const price = e.target.price.value;
     const quantity = e.target.quantity.value;
     const rating = e.target.rating.value;
     const cetagory = e.target.cetagory.value;
-    const username = e.target.username.value;
-    const useremail = e.target.useremail.value;
 
     if (rating > 5) {
       setError("Rating must be 5 or less");
@@ -32,7 +31,6 @@ const AddToys = () => {
     }
 
     const toy = {
-      uid: user?.uid,
       picture_url: url,
       name: title,
       sub_category: cetagory,
@@ -40,17 +38,15 @@ const AddToys = () => {
       rating: rating,
       quantity: quantity,
       description: discription,
-      email: useremail,
-      username: username,
     };
 
     try {
       setError("");
 
       const response = await fetch(
-        "https://fan-vault-toys-server.vercel.app/toys",
+        `https://fan-vault-toys-server.vercel.app/mytoys/${data?._id}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "content-type": "application/json",
           },
@@ -59,12 +55,13 @@ const AddToys = () => {
       );
 
       const result = await response.json();
-      if (result.acknowledged) {
+      console.log(result);
+      if (result.matchedCount > 0) {
         MySwal.fire({
-          title: <strong>Successfully Added!</strong>,
+          title: <strong>Successfully Updated!</strong>,
           icon: "success",
         });
-        document.getElementById("addform").reset();
+        navigate("/mytoys");
       }
     } catch (error) {
       setError(error);
@@ -83,7 +80,7 @@ const AddToys = () => {
       )}
       <form
         id="addform"
-        onSubmit={handleAdd}
+        onSubmit={handleUpdate}
         className="flex flex-col gap-4 w-full"
       >
         <div>
@@ -96,6 +93,7 @@ const AddToys = () => {
             type="text"
             required={true}
             shadow={true}
+            defaultValue={data?.picture_url}
           />
         </div>
         <div>
@@ -108,6 +106,7 @@ const AddToys = () => {
             type="text"
             required={true}
             shadow={true}
+            defaultValue={data?.name}
           />
         </div>
         <div>
@@ -120,6 +119,7 @@ const AddToys = () => {
             type="text"
             required={true}
             shadow={true}
+            defaultValue={data?.description}
           />
         </div>
         <div>
@@ -132,6 +132,7 @@ const AddToys = () => {
             type="number"
             required={true}
             shadow={true}
+            defaultValue={data?.price}
           />
         </div>
         <div>
@@ -144,6 +145,7 @@ const AddToys = () => {
             type="number"
             required={true}
             shadow={true}
+            defaultValue={data?.quantity}
           />
         </div>
         <div>
@@ -156,6 +158,7 @@ const AddToys = () => {
             type="number"
             required={true}
             shadow={true}
+            defaultValue={data?.rating}
           />
         </div>
 
@@ -170,6 +173,7 @@ const AddToys = () => {
             id="countries"
             name="cetagory"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+            defaultValue={data?.cetagory}
           >
             <option value="dc">DC Comice</option>
             <option value="marvel">Marvel</option>
@@ -177,40 +181,10 @@ const AddToys = () => {
             <option value="transformers">Transformers</option>
           </select>
         </div>
-
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="username" value="User Name" />
-          </div>
-          <TextInput
-            name="photo"
-            id="username"
-            type="text"
-            disabled
-            required={true}
-            shadow={true}
-            value={user?.displayName}
-          />
-        </div>
-
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="useremail" value="User Email" />
-          </div>
-          <TextInput
-            name="photo"
-            id="useremail"
-            type="text"
-            disabled
-            required={true}
-            shadow={true}
-            value={user?.email}
-          />
-        </div>
-        <Button type="submit">Add Toy</Button>
+        <Button type="submit">Update Toy</Button>
       </form>
     </div>
   );
 };
 
-export default AddToys;
+export default UpdateToy;
