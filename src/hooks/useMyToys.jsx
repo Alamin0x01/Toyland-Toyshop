@@ -7,7 +7,7 @@ const useMyToys = (sort) => {
 
   const getData = async () => {
     const response = await fetch(
-      `https://fan-vault-toys-server.vercel.app/mytoys?userId=${user?.uid}&sort=${sort}`
+      `https://toy-marketplace-server-side-alamin0x01.vercel.app/mytoys?userId=${user?.uid}&sort=${sort}`
     );
 
     const result = await response.json();

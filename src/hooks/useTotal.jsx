@@ -5,7 +5,7 @@ const useTotal = () => {
 
   const getData = async () => {
     const response = await fetch(
-      `https://fan-vault-toys-server.vercel.app/totaltoy`
+      `https://toy-marketplace-server-side-alamin0x01.vercel.app/totaltoy`
     );
 
     const { result } = await response.json();

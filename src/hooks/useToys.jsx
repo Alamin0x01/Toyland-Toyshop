@@ -5,7 +5,7 @@ const useToys = (page, limit, cetagory, search) => {
 
   const getData = async () => {
     const response = await fetch(
-      `https://fan-vault-toys-server.vercel.app/toys?page=${page}&limit=${limit}&cetagory=${cetagory}&search=${search}`
+      `https://toy-marketplace-server-side-alamin0x01.vercel.app/toys?page=${page}&limit=${limit}&cetagory=${cetagory}&search=${search}`
     );
 
     const result = await response.json();
