@@ -14,7 +14,7 @@ const DataROw = ({ toy, number }) => {
         <td>{availableQuantity}</td>
         <td>
           <Link
-            className="bg-orange text-white p-2 rounded-lg cursor-pointer font-bold hover:text-black"
+            className="bg-pink-400 text-white p-2 rounded-lg cursor-pointer font-bold hover:text-black"
             to={`/toyDetails/${_id}`}
           >
             View Details

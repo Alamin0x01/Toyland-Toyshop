@@ -20,8 +20,6 @@ const MyToys = () => {
   const [myToys, setMyToys] = useState([]);
   const [sortOrder, setSortOrder] = useState("desc"); // Track the current sort order
 
-  // console.log(selectedId);
-
   useEffect(() => {
     fetch(
       `https://toy-marketplace-server-side-ochre.vercel.app/toysBy?email=${user?.email}&sort=${sortOrder}`
@@ -29,8 +27,6 @@ const MyToys = () => {
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user?.email, sortOrder, selectedId]);
-
-  // console.log(myToys);
 
   const handleSortByPrice = () => {
     // Toggle the sort order between ascending and descending
@@ -43,7 +39,7 @@ const MyToys = () => {
       <div className="overflow-x-auto">
         <div className="flex justify-center mb-10">
           <button
-            className="btn bg-orange border-0"
+            className="btn bg-rose-300 border-0"
             onClick={handleSortByPrice}
           >
             Sort by Price ({sortOrder === "desc" ? "Ascending" : "Descending"})

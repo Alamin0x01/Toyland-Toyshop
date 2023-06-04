@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <div className="bg-valentine-50">
       <Banner></Banner>
-      <Gallery></Gallery>
       <Category></Category>
+      <Gallery></Gallery>
       <BestSale></BestSale>
       <Feedbacks></Feedbacks>
       <ContactUs></ContactUs>

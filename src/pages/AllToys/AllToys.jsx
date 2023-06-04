@@ -41,7 +41,10 @@ const AllToys = () => {
               placeholder="Search by name"
               className="input input-bordered"
             />
-            <button onClick={handleSearch} className="btn btn-square bg-orange">
+            <button
+              onClick={handleSearch}
+              className="btn btn-square bg-rose-400"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -61,8 +64,7 @@ const AllToys = () => {
         </div>
       </div>
       <div className="overflow-x-auto">
-        <table className="table w-full">
-          {/* head */}
+        <table className="table w-full ml-16">
           <thead>
             <tr>
               <th></th>

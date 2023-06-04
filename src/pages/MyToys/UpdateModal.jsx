@@ -97,7 +97,6 @@ const UpdateModal = ({ selectedId, setSelectedId }) => {
               type="submit"
               value="Update"
             />
-            {/* <button className='btn bg-orange w-full mt-6 border-0'>Update</button> */}
           </form>
         </label>
       </label>
