@@ -11,7 +11,7 @@ const TabCard = ({ category }) => {
   const { user } = useContext(AuthContext);
 
   const handleViewDetails = () => {
-    toast("You have to log in first to view details"); // Display the toast message
+    toast("You have to log in first! Then view details"); // Display the toast message
     window.location.href = `/toyDetails/${_id}`;
   };
 
@@ -42,14 +42,14 @@ const TabCard = ({ category }) => {
             <div className="card-actions">
               {user ? (
                 <Link
-                  className="btn bg-orange border-0"
+                  className="btn bg-rose-400 border-0"
                   to={`/toyDetails/${_id}`}
                 >
                   View Details
                 </Link>
               ) : (
                 <button
-                  className="btn bg-orange border-0"
+                  className="btn bg-rose-400 border-0"
                   onClick={handleViewDetails}
                 >
                   View Details

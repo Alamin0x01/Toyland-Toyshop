@@ -7,7 +7,7 @@ const Category = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    handleCategory("Avengers"); // Load Avengers data by default
+    handleCategory("Avengers");
   }, []);
 
   const handleCategory = (category) => {
@@ -23,16 +23,22 @@ const Category = () => {
   return (
     <div className="my-14">
       <div className="text-center my-6">
-        <h2 className="text-4xl font-bold text-center text-orange mt-12 mb-4">
-          Toys Category
+        <h2 className="text-4xl font-bold text-center bg-gradient-to-r from-pink-400 to-yellow-500 text-transparent bg-clip-text mt-12 mb-4">
+          Explore All Action figure Toys By Category
         </h2>
-        <p className="text-2xl font-semibold">Buy Your Favorite Toy.</p>
+        <p>Discover Unique Toys Tailored to Your Child's Interests</p>
       </div>
-      <Tabs id="tabs" className="">
-        <TabList className="mx-auto text-center border-b border-orange">
-          <Tab onClick={() => handleCategory("Avengers")}>Avengers</Tab>
-          <Tab onClick={() => handleCategory("DC Comics")}>DC Comics</Tab>
-          <Tab onClick={() => handleCategory("Transformers")}>Transformers</Tab>
+      <Tabs>
+        <TabList className="mx-auto text-center  border-b border-orange ">
+          <Tab onClick={() => handleCategory("Avengers")}>
+            <span className="btn btn-outline btn-error">Avengers</span>
+          </Tab>
+          <Tab onClick={() => handleCategory("DC Comics")}>
+            <span className="btn btn-outline btn-error">DC Comics</span>
+          </Tab>
+          <Tab onClick={() => handleCategory("Transformers")}>
+            <span className="btn btn-outline btn-error">Transformers</span>
+          </Tab>
         </TabList>
 
         <TabPanel>
