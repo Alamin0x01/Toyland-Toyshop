@@ -9,7 +9,6 @@ import PrivateRoute from "./PrivateRoute";
 import AllToys from "../Pages/AllToys/AllToys";
 import AddAToy from "../Pages/AddAToy";
 import MyToys from "../Pages/MyToys/MyToys";
-
 import Blog from "../Pages/Blog";
 import Error from "../Pages/Error/Error";
 

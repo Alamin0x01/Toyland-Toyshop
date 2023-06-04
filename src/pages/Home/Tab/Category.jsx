@@ -11,7 +11,7 @@ const Category = () => {
   }, []);
 
   const handleCategory = (category) => {
-    const url = `http://localhost:5000/toys/${category}`;
+    const url = `https://toy-marketplace-server-side-ochre.vercel.app/toys/${category}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {

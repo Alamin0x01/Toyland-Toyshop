@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-// import { useLoaderData } from "react-router-dom";
 import DataROw from "./DataROw";
 import useTitle from "../../Hook/useTitle";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -11,7 +10,7 @@ const AllToys = () => {
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://toy-marketplace-server-side-ochre.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -24,7 +23,9 @@ const AllToys = () => {
   }
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/toysName/${searchText}`)
+    fetch(
+      `https://toy-marketplace-server-side-ochre.vercel.app/toysName/${searchText}`
+    )
       .then((res) => res.json())
       .then((data) => setToys(data));
   };
