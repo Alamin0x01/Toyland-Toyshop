@@ -17,13 +17,16 @@ const UpdateModal = ({ selectedId, setSelectedId }) => {
     console.log(selectedId);
 
     if (selectedId) {
-      fetch(`http://localhost:5000/toys/${selectedId}`, {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updatedToy),
-      })
+      fetch(
+        `https://toy-marketplace-server-side-ochre.vercel.app/toys/${selectedId}`,
+        {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(updatedToy),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

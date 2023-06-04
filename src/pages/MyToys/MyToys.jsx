@@ -23,7 +23,9 @@ const MyToys = () => {
   // console.log(selectedId);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/toysBy?email=${user?.email}&sort=${sortOrder}`)
+    fetch(
+      `https://toy-marketplace-server-side-ochre.vercel.app/toysBy?email=${user?.email}&sort=${sortOrder}`
+    )
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user?.email, sortOrder, selectedId]);

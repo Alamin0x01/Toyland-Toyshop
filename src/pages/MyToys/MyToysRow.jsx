@@ -29,9 +29,12 @@ const MyToysRow = ({ myToy, number, myToys, setMyToys, setSelectedId }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/toys/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://toy-marketplace-server-side-ochre.vercel.app/toys/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

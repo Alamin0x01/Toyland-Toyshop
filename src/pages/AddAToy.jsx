@@ -33,7 +33,7 @@ const AddAToy = () => {
     // console.log(name, pictureURL, category, price, rating, description, sellerName, sellerEmail);
     console.log(newToy);
 
-    fetch("http://localhost:5000/toys", {
+    fetch("https://toy-marketplace-server-side-ochre.vercel.app/toys", {
       method: "POST",
       headers: {
         "content-type": "application/json",

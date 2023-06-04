@@ -28,7 +28,10 @@ const routes = createBrowserRouter([
             <ToyDetails />
           </PrivateRoute>
         ),
-        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`),
+        loader: ({ params }) =>
+          fetch(
+            `https://toy-marketplace-server-side-ochre.vercel.app/toy/${params.id}`
+          ),
         //     loader: async ({ params }) =>
         //       await fetch(`http://localhost:5000/toy/${params.id}`),
       },
