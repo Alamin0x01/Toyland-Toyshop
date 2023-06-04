@@ -18,13 +18,12 @@ const SignIn = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     signIn(email, password)
       .then((result) => {
         const user = result.user;
         toast("Sign in Successfully");
-        console.log(user);
+
         navigate(from, { replace: true });
         form.reset();
       })
