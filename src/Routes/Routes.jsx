@@ -1,33 +1,59 @@
+import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import App from "../App";
-import Home from "../pages/Home/Home";
-import Toys from "../pages/Toys/Toys";
-import Blog from "../pages/Blog/Blog";
-import SignIn from "../pages/Signin/SignIn";
-import SignUp from "../pages/Signup/SignUp";
-import MyToys from "../pages/MyToys/MyToys";
-import AddToys from "../pages/AddToys/AddToys";
-import Error from "../pages/Error/Error";
+import MainLayout from "../Layout/MainLayout";
+import SignIn from "../Pages/SignIn";
+import SignUp from "../Pages/SignUp";
+import Home from "../Pages/Home/Home";
+import ToyDetails from "../Pages/ToyDetails";
 import PrivateRoute from "./PrivateRoute";
-import Details from "../pages/Details/Details";
-import UpdateToy from "../pages/UpdateToy/UpdateToy";
+import AllToys from "../Pages/AllToys/AllToys";
+import AddAToy from "../Pages/AddAToy";
+import MyToys from "../Pages/MyToys/MyToys";
+import Notfound from "../Pages/Notfound";
+import Blog from "../Pages/Blog";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-    errorElement: <Error />,
+    element: <MainLayout />,
     children: [
       {
         path: "/",
         element: <Home />,
       },
       {
-        path: "toys",
-        element: <Toys />,
+        path: "/toyDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ToyDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`),
+        //     loader: async ({ params }) =>
+        //       await fetch(`http://localhost:5000/toy/${params.id}`),
       },
       {
-        path: "blog",
+        path: "/allToys",
+        element: <AllToys />,
+      },
+      {
+        path: "addAToy",
+        element: (
+          <PrivateRoute>
+            <AddAToy />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "myToys",
+        element: (
+          <PrivateRoute>
+            <MyToys />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "blogs",
         element: <Blog />,
       },
       {
@@ -38,47 +64,11 @@ const routes = createBrowserRouter([
         path: "signup",
         element: <SignUp />,
       },
-      {
-        path: "mytoys",
-        element: (
-          <PrivateRoute>
-            <MyToys />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "addtoy",
-        element: (
-          <PrivateRoute>
-            <AddToys />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "details/:id",
-        element: (
-          <PrivateRoute>
-            <Details />
-          </PrivateRoute>
-        ),
-        loader: async ({ params }) =>
-          await fetch(
-            `https://toy-marketplace-server-side-alamin0x01.vercel.app/toy/${params?.id}`
-          ),
-      },
-      {
-        path: "update/:id",
-        element: (
-          <PrivateRoute>
-            <UpdateToy />
-          </PrivateRoute>
-        ),
-        loader: async ({ params }) =>
-          await fetch(
-            `https://toy-marketplace-server-side-alamin0x01.vercel.app/toy/${params?.id}`
-          ),
-      },
     ],
+  },
+  {
+    path: "*",
+    element: <Notfound />,
   },
 ]);
 

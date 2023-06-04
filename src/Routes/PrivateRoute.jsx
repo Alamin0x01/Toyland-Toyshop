@@ -1,26 +1,17 @@
-// eslint-disable-next-line no-unused-vars
-import React from "react";
-import { Navigate, useLocation } from "react-router-dom";
-import { useAuth } from "../context/AuthProvider";
+import React, { useContext } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
+import { Navigate, useLocation } from 'react-router-dom';
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useAuth();
-
-  const { pathname } = useLocation();
-
-  if (loading) {
-    return <div>Lading....</div>;
-  }
-
-  if (user) {
-    return children;
-  }
-
-  return (
-    <>
-      <Navigate state={{ path: pathname }} to="/signin" />
-    </>
-  );
+    const { user, loading } = useContext(AuthContext);
+    let location = useLocation();
+    if (loading) {
+        return <progress className="progress w-56"></progress>
+    }
+    if (user) {
+        return children;
+    }
+    return <Navigate state={{ from: location }} to='/signin' replace></Navigate>
 };
 
 export default PrivateRoute;

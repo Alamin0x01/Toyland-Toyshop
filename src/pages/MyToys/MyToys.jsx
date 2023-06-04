@@ -1,106 +1,89 @@
-import { Table, Spinner } from "flowbite-react";
-import useTitle from "../../hooks/useTitle";
-import useMyToys from "../../hooks/useMyToys";
-import MyToyRow from "./MyToyRow";
-import Swal from "sweetalert2";
-import { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
+import MyToysRow from "./MyToysRow";
+import UpdateModal from "./UpdateModal";
+import useTitle from "../../Hook/useTitle";
 
 const MyToys = () => {
   useTitle("My Toys");
+  const { user, loading } = useContext(AuthContext);
 
-  const [sort, setSort] = useState("");
-  const [toys, setToys] = useMyToys(sort);
+  if (loading) {
+    return (
+      <div className="mx-auto w-1/3 my-6">
+        <progress className="progress"></progress>
+      </div>
+    );
+  }
 
-  const handleDelete = async (id) => {
-    try {
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const call = async () => {
-            const response = await fetch(
-              `https://toy-marketplace-server-side-alamin0x01.vercel.app/mytoys/${id}`,
-              {
-                method: "DELETE",
-              }
-            );
+  const [selectedId, setSelectedId] = useState(null);
+  const [myToys, setMyToys] = useState([]);
+  const [sortOrder, setSortOrder] = useState("desc"); // Track the current sort order
 
-            const result = await response.json();
+  // console.log(selectedId);
 
-            if (result.deletedCount > 0) {
-              setToys((prev) => prev.filter((item) => item._id !== id));
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
-            }
-          };
-          call();
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  useEffect(() => {
+    fetch(`http://localhost:5000/toysBy?email=${user?.email}&sort=${sortOrder}`)
+      .then((res) => res.json())
+      .then((data) => setMyToys(data));
+  }, [user?.email, sortOrder, selectedId]);
+
+  // console.log(myToys);
+
+  const handleSortByPrice = () => {
+    // Toggle the sort order between ascending and descending
+    const newSortOrder = sortOrder === "desc" ? "asc" : "desc";
+    setSortOrder(newSortOrder);
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 min-h-screen">
-      {toys?.length > 0 ? (
-        <>
-          <div className="flex justify-end py-4">
-            <select
-              id="countries"
-              name="cetagory"
-              onChange={(e) => setSort(e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 w-fit cursor-pointer"
-            >
-              <option value="">Sort by name</option>
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
-            </select>
-          </div>
-          <div className="overflow-auto">
-            <Table striped={true}>
-              <Table.Head>
-                <Table.HeadCell>Toy name</Table.HeadCell>
-                <Table.HeadCell>Category</Table.HeadCell>
-                <Table.HeadCell>Quantity</Table.HeadCell>
-                <Table.HeadCell>Price</Table.HeadCell>
-
-                <Table.HeadCell>
-                  <span className="sr-only">Edit</span>
-                </Table.HeadCell>
-                <Table.HeadCell>
-                  <span className="sr-only">Delete</span>
-                </Table.HeadCell>
-              </Table.Head>
-              <Table.Body className="divide-y">
-                {toys ? (
-                  toys?.map((toy) => (
-                    <MyToyRow
-                      handleDelete={handleDelete}
-                      key={toy?._id}
-                      toy={toy}
-                    />
-                  ))
-                ) : (
-                  <Spinner
-                    className="mx-auto py-4 w-fit"
-                    color="info"
-                    aria-label="Info spinner example"
-                  />
-                )}
-              </Table.Body>
-            </Table>
-          </div>
-        </>
-      ) : (
-        <h3 className="font-bold text-3xl text-center my-4 text-slate-700">
-          There are no toy available
-        </h3>
+    <div className="my-14">
+      <div className="overflow-x-auto">
+        <div className="flex justify-center mb-10">
+          <button
+            className="btn bg-orange border-0"
+            onClick={handleSortByPrice}
+          >
+            Sort by Price ({sortOrder === "desc" ? "Ascending" : "Descending"})
+          </button>
+        </div>
+        <table className="table w-full">
+          {/* head */}
+          <thead>
+            <tr>
+              <th></th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Rating</th>
+              <th>Quantity</th>
+              <th>Details</th>
+              <th>Seller Name</th>
+              <th>Seller Email</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myToys.map((myToy, index) => (
+              <MyToysRow
+                key={myToy._id}
+                myToy={myToy}
+                number={index}
+                myToys={myToys}
+                setMyToys={setMyToys}
+                setSelectedId={setSelectedId}
+              ></MyToysRow>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {selectedId && (
+        <UpdateModal
+          setSelectedId={setSelectedId}
+          selectedId={selectedId}
+        ></UpdateModal>
       )}
     </div>
   );
