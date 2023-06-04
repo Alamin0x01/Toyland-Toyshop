@@ -7,7 +7,6 @@ import { useLoaderData } from "react-router-dom";
 const ToyDetails = () => {
   useTitle("Details");
   const toy = useLoaderData();
-  //   console.log(toy);
   const {
     name,
     pictureUrl,
@@ -24,7 +23,7 @@ const ToyDetails = () => {
         <div className="hero-content flex-col lg:flex-row">
           <img src={pictureUrl} className="max-w-sm rounded-lg shadow-2xl " />
           <div className="lg:ms-8">
-            <h1 className="text-5xl font-bold text-orange">{name}</h1>
+            <h1 className="text-5xl font-bold text-pink-600">{name}</h1>
             <p className="py-6 font-semibold">{description}</p>
             <div className="space-y-4">
               <p className="text-lg font-semibold">
