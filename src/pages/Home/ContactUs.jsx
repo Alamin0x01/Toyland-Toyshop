@@ -1,11 +1,16 @@
 import React from "react";
-
+import { FaPhone } from "react-icons/fa";
 const ContactUs = () => {
   return (
     <div className="py-10 overflow-hidden">
-      <h1 className="font-bold font-bangers text-5xl pt-20 text-center">
-        Contact us
-      </h1>
+      <div className="flex gap-10 items-center justify-center">
+        <h1 className="font-bold font-bangers text-5xl text-center">
+          Contact us
+        </h1>
+        <p>
+          <FaPhone className="text-4xl"></FaPhone>
+        </p>
+      </div>
       <div>
         <div className="hero py-10 ">
           <div className="hero-content gap-10 flex-col lg:flex-row">

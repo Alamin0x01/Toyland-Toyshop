@@ -89,14 +89,16 @@ const SignIn = () => {
         </p>
 
         <div className="divider">OR</div>
-        <div className="text-center w-full">
-          <p className="font-bold">Sign In with:</p>
-          <div className="w-full mt-4">
-            <FaGoogle
-              onClick={handelGoogleLogin}
-              className="text-2xl hover:text-orange cursor-pointer mx-auto"
-            />
-          </div>
+        <div>
+          <button
+            onClick={handelGoogleLogin}
+            className="btn border-0 btn-block flex items-center bg-gradient-to-r from-pink-400 to-yellow-300 tracking-widest"
+          >
+            Login With Google{" "}
+            <span className="ml-4 text-2xl hover:text-cyan-600 cursor-pointer">
+              <FaGoogle></FaGoogle>
+            </span>
+          </button>
         </div>
       </div>
       <ToastContainer />
