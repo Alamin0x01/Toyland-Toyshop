@@ -86,7 +86,7 @@ const Footer = () => {
           <a className="link link-hover text-black">Cookie policy</a>
         </div>
       </div>
-      <p className="py-5 text-center">
+      <p className="py-5 text-center bg-red-300">
         Copyright © 2023 - All right reserved by{" "}
         <span className="font-bold text-orange-500">Toyland Toyshop</span>
       </p>

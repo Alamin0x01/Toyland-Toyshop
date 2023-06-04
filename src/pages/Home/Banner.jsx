@@ -1,26 +1,26 @@
 import React from "react";
-
 const Banner = () => {
   return (
     <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8">
       <div className="lg:flex items-center justify-between">
         <div className="lg:w-1/3">
-          <h1 className="text-4xl text-yellow-400 font-bold  leading-9 ">
-            Indoor Interiors
+          <h1 className="text-4xl text-red-400 font-bold  leading-9 ">
+            Makes Your Baby Happier
           </h1>
           <p className="text-base leading-6 mt-4 text-gray-600">
-            Get inspired by our curated selection of luxiwood interiors. We hope
-            get inspired to have luxiwood interior yourself. You’ll find tips
-            here where you can buy a lot of cool furniture.
+            Welcome to our action-packed world of toys! At our e-commerce
+            website, we specialize in bringing you the latest and greatest
+            action toys that will ignite your imagination and bring endless
+            excitement to your playtime.
           </p>
           <button
             aria-label="view catalogue"
-            className="focus:outline-none mt-6 md:mt-8 text-base font-semibold leading-none  flex items-center   border border-yellow-600
-              hover:bg-yellow-200  px-6
+            className="focus:outline-none mt-6 md:mt-8 text-base font-semibold leading-none  flex items-center    border-red-300
+              hover:bg-rose-400  px-6
               h-11
-              text-gray-800"
+              text-gray-800 border-2"
           >
-            View Catalogue
+            SHOP NOW
             <svg
               className="ml-2 mt-1"
               width="12"
@@ -78,19 +78,6 @@ const Banner = () => {
         </div>
       </div>
     </div>
-    // <div>
-    //     <div className="hero min-h-screen" style={{ backgroundImage: `url(${bannerImg})` }}>
-    //         <div className="hero-overlay bg-opacity-60"></div>
-    //         <div className="hero-content text-neutral-content">
-    //             <div className="">
-    //                 <h1 className="mb-5 text-5xl font-bold">Super Toys</h1>
-    //                 <h2 className='text-3xl font-bold text-orange'>Grab your favorite action toys.</h2>
-    //                 <p className="my-5 lg:w-1/2">Welcome to our action-packed world of toys! At our e-commerce website, we specialize in bringing you the latest and greatest action toys that will ignite your imagination and bring endless excitement to your playtime.</p>
-    //                 <a href="#tabs" className='btn bg-orange'>Get Started</a>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>
   );
 };
 
