@@ -1,71 +1,242 @@
-import React from 'react';
+import React from "react";
 
 const Blog = () => {
-    return (
-        <div className='container mx-auto my-14'>
-            <div>
-                <h3 className='text-2xl font-semibold my-4'>1/ What is an access token and refresh token? How do they work and where should we store them on the client-side?</h3>
-                <p><span className='font-bold'>Access Token:</span> An access token is a credential that is used to access protected resources on behalf of an authenticated user. It is typically a string of characters that represents the authorization granted to the user. Access tokens are time-limited and have a shorter lifespan compared to refresh tokens.</p>
-                <p><span className='font-bold'>Refresh Token:</span> A refresh token is a long-lived credential used to obtain a new access token without requiring the user to re-authenticate. It is used to refresh the access token when it expires. Refresh tokens are usually valid for a longer period than access tokens.</p>
-                <h4 className='text-xl my-3 font-semibold'>Works of access token and refresh token:</h4>
-                <ul className="list-disc">
-                    <li>The user provides their credentials to the authentication server.</li>
-                    <li>The authentication server verifies the credentials and, if valid, generates an access token and a refresh token.</li>
-                    <li>The client includes the access token in each request to the server's protected resources. The server verifies the access token to ensure the user has the necessary permissions to access the requested resource.</li>
-                    <li>The access token has a limited lifespan. Once it expires, the client needs to obtain a new one to continue accessing protected resources.</li>
-                    <li> To obtain a new access token, the client sends the refresh token to a token endpoint on the server. If the refresh token is valid, the server generates a new access token and, optionally, a new refresh token.</li>
-                </ul>
-                <h4 className='text-xl my-3  font-semibold'>Where should we store them on the client-side?</h4>
-                <p>Access token usually stored in memory on the client-side. Storing them in memory makes them easily accessible for including in API requests.</p>
-                <p>Refresh token store in an HTTP-only cookie or a secure storage mechanism provided by the operating system like: Keychain on macOS, Credential Locker on Windows.</p>
+  return (
+    <div className="2xl:mx-auto 2xl:container 2xl:px-20 xl:px-12 sm:px-6 px-4 py-16">
+      <h1 className="lg:text-4xl text-center text-3xl font-semibold leading-9 text-gray-800">
+        Join Our Blog Community
+      </h1>
+      <p className="lg:text-center text-base leading-normal mt-4  text-gray-600">
+        If youre looking for random paragraphs, youve come to the right place.
+      </p>
+      <div className="md:flex items-start justify-between mt-12">
+        <div className="md:w-1/2 lg:w-full">
+          <div>
+            <div className="relative">
+              <img src="https://i.ibb.co/DKg5zHT/img-3.png" alt="stairs" />
+              <div className="bg-white absolute top-0 left-0">
+                <p className="text-base leading-4 py-3 px-5 text-gray-800">
+                  News
+                </p>
+              </div>
             </div>
-            <div>
-                <h3 className='text-2xl font-semibold my-4'>2/ Compare SQL and NoSQL databases?</h3>
-                <table className="table-auto border">
-                    {/* head */}
-                    <thead className='border'>
-                        <tr>
-                            <th></th>
-                            <th className='border-e'>SQL</th>
-                            <th>NoSQL</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {/* row 1 */}
-                        <tr className='border'>
-                            <th>1</th>
-                            <td className='border-e'>SQL databases use a structured data model known as the relational model. Data is organized into tables with predefined schemas, consisting of rows and columns.</td>
-                            <td>NoSQL databases use a variety of data models, including key-value, document, columnar, and graph. These models provide flexibility in handling unstructured, semi-structured, and varying data types.</td>
-
-                        </tr>
-                        {/* row 2 */}
-                        <tr className='border'>
-                            <th>2</th>
-                            <td className='border-e'>QL databases have a rigid schema defined before data insertion. The schema specifies the structure, data types, and relationships between tables. Changes to the schema often require altering existing data.</td>
-                            <td>NoSQL databases are schema-less or have a flexible schema. Each record/document can have a different structure, allowing for easy modification and evolution of the data model.</td>
-                        </tr>
-                        {/* row 3 */}
-                        <tr>
-                            <th>3</th>
-                            <td className='border-e'>SQL databases typically scale vertically by adding more resources to a single server. Scaling horizontally across multiple servers can be challenging due to the rigid structure and tight relationships between tables.</td>
-                            <td>NoSQL databases are designed to scale horizontally by distributing data across multiple servers. They can handle large volumes of data and high read/write loads efficiently.</td>
-
-                        </tr>
-                    </tbody>
-                </table>
+            <p className="text-base font-light leading-4 text-gray-800 mt-6">
+              Michael Jackson
+            </p>
+            <h1 className="text-2xl font-semibold leading-7 sm:pr-20 mt-2 text-gray-800">
+              What is an access token and refresh token? How do they work and
+              where should we store them on the client-side?
+            </h1>
+            <p className="text-base leading-normal mt-4 sm:pr-20 md:pr-10 text-gray-600">
+              A refresh token just helps you re-validate a user without them
+              having to re-enter their login credentials multiple times. refresh
+              token is advisable to store them securely, typically using secure
+              HTTP-only cookies or encrypted storage mechanisms such as the
+              browsers session storage or secure HTTP-only local storage.
+            </p>
+            <button className="flex items-center justify-between w-72 mt-6 bg-gray-800 p-4 hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+              <p className="text-base font-medium leading-4 text-white">
+                Read more
+              </p>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.33203 8H12.6654"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 10.6667L12.6667 8"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 5.33344L12.6667 8.0001"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div className="mt-9">
+            <div className="relative">
+              <img src="https://i.ibb.co/HxkBZQM/img-1.png " alt="flower pot" />
+              <div className="bg-white absolute top-0 left-0">
+                <p className="text-base leading-4 py-3 px-5 text-gray-800">
+                  News
+                </p>
+              </div>
             </div>
-            <div>
-                <h3 className='text-2xl font-semibold my-4'>3/ What is express js? What is Nest JS</h3>
-                <p><span className='font-bold'>Express.js</span> is a minimalist and flexible web application framework for Node.js, providing essential features for building web servers and APIs with simplicity and customization.</p>
-                <p className='pt-3'><span className='font-bold'>NestJS</span> is a full-featured, TypeScript-based framework inspired by Angular, offering a structured and scalable approach for building server-side applications with features like dependency injection, decorators, modules, and a powerful routing system.</p>
-            </div>
-            <div>
-                <h3 className='text-2xl font-semibold my-4'>4/ What is MongoDB aggregate and how does it work?</h3>
-                <p>MongoDB's aggregate function is a powerful tool that allows to perform advanced data processing and analysis operations on a collection.</p>
-                <p> It works by taking an array of stages, each representing a specific data processing step, and processes them sequentially. The stages can perform operations like filtering, grouping, sorting, projecting, and aggregating data. By chaining these stages together, it can create complex data pipelines to manipulate and analyze data in MongoDB.</p>
-            </div>
+            <p className="text-base font-light leading-4 text-gray-800 mt-6">
+              Michael Jackson
+            </p>
+            <h1 className="text-2xl font-semibold leading-7 sm:pr-20 mt-2 text-gray-800">
+              Compare SQL and NoSQL databases?
+            </h1>
+            <p className="text-base leading-normal mt-4 sm:pr-20 md:pr-10 text-gray-600">
+              SQL databases are vertically scalable, while NoSQL databases are
+              horizontally scalable. SQL databases are table-based, while NoSQL
+              databases are document, key-value, graph, or wide-column stores.
+              SQL databases are better for multi-row transactions, while NoSQL
+              is better for unstructured data like documents or JSON.
+            </p>
+            <button className="flex items-center justify-between w-72 mt-6 bg-gray-800 p-4 hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+              <p className="text-base font-medium leading-4 text-white">
+                Read more
+              </p>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.33203 8H12.6654"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 10.6667L12.6667 8"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 5.33344L12.6667 8.0001"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
-    );
+        <div className="md:w-1/2 md:ml-6 md:mt-0 mt-9 lg:w-full">
+          <div>
+            <div className="relative">
+              <img src="https://i.ibb.co/8mP5tmS/img-2.png " alt="stairs" />
+              <div className="bg-white absolute top-0 left-0">
+                <p className="text-base leading-4 py-3 px-5 text-gray-800">
+                  News
+                </p>
+              </div>
+            </div>
+            <p className="text-base font-light leading-4 text-gray-800 mt-6">
+              James McFerson
+            </p>
+            <h1 className="text-2xl font-semibold leading-7 sm:pr-20 mt-2 text-gray-800">
+              What is MongoDB aggregate and how does it work?
+            </h1>
+            <p className="text-base leading-normal mt-4 sm:pr-20 md:pr-10 text-gray-600">
+              MongoDB Aggregation is a way of processing a large number of
+              documents in a collection by means of passing them through
+              different stages. This MongoDB Aggregation uses the Pipeline
+              concept in the UNIX command, where the pipeline defines the
+              possibility to perform an operation on few inputs and apply the
+              output resulted as the input for the succeeding command, and it
+              follows the same. MongoDB supports this idea in the aggregation
+              framework.
+            </p>
+            <button className="flex items-center justify-between w-72 mt-6 bg-gray-800 p-4 hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+              <p className="text-base font-medium leading-4 text-white">
+                Read more
+              </p>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.33203 8H12.6654"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 10.6667L12.6667 8"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 5.33344L12.6667 8.0001"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+          <div className="mt-9">
+            <div className="relative">
+              <img src="https://i.ibb.co/dPBXFwY/img-4.png" alt="stairs" />
+              <div className="bg-white absolute top-0 left-0">
+                <p className="text-base leading-4 py-3 px-5 text-gray-800">
+                  News
+                </p>
+              </div>
+            </div>
+            <p className="text-base font-light leading-4 text-gray-800 mt-6">
+              James McFerson
+            </p>
+            <h1 className="text-2xl font-semibold leading-7 sm:pr-20 mt-2 text-gray-800">
+              What is express js? What is Nest JS?
+            </h1>
+            <p className="text-base leading-normal mt-4 sm:pr-20 md:pr-10 text-gray-600">
+              Express is a minimalist and flexible framework that is easy to use
+              and has a large community of developers. NestJS, on the other
+              hand, is a newer framework that provides additional features such
+              as dependency injection, a modular architecture, and an intuitive
+              CLI.
+            </p>
+            <button className="flex items-center justify-between w-72 mt-6 bg-gray-800 p-4 hover:bg-gray-700 focus:ring-2 focus:ring-offset-2 focus:ring-gray-700">
+              <p className="text-base font-medium leading-4 text-white">
+                Read more
+              </p>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.33203 8H12.6654"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 10.6667L12.6667 8"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M10 5.33344L12.6667 8.0001"
+                  stroke="white"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Blog;

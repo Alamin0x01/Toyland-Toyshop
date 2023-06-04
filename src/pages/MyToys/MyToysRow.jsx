@@ -74,7 +74,7 @@ const MyToysRow = ({ myToy, number, myToys, setMyToys, setSelectedId }) => {
           <label
             onClick={() => setSelectedId(_id)}
             htmlFor="my-modal-3"
-            className="cursor-pointer bg-orange font-semibold p-2 rounded-lg text-white"
+            className="cursor-pointer bg-cyan-500 font-semibold p-2 rounded-lg text-white"
           >
             Edit
           </label>
@@ -82,7 +82,7 @@ const MyToysRow = ({ myToy, number, myToys, setMyToys, setSelectedId }) => {
         <td>
           <p
             onClick={() => handleDelete(_id)}
-            className="cursor-pointer bg-orange font-semibold p-2 rounded-lg text-white"
+            className="cursor-pointer bg-red-500 font-semibold p-2 rounded-lg text-white"
           >
             Delete
           </p>

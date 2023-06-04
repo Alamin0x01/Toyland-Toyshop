@@ -106,7 +106,7 @@ const Navbar = () => {
             </>
           ) : (
             <Link
-              className="border p-2 rounded-xl border-orange font-semibold hover:bg-sky-400 hover:text-white"
+              className="border p-2 rounded-xl border-orange font-semibold hover:bg-rose-400 hover:text-white"
               to="/signin"
             >
               Login

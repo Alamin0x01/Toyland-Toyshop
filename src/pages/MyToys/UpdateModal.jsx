@@ -93,7 +93,7 @@ const UpdateModal = ({ selectedId, setSelectedId }) => {
               />
             </div>
             <input
-              className="btn bg-orange border-0 w-full my-4"
+              className="btn bg-cyan-400 border-0 w-full my-4"
               type="submit"
               value="Update"
             />

@@ -47,13 +47,13 @@ const Gallery = () => {
             <SwiperSlide>
               <img
                 className="h-[500px] w-full"
-                src="https://i.ibb.co/fC3K1Xg/gallery-One.jpg"
+                src="https://i.ibb.co/J2nP4zf/gallery-Two.jpg"
               />
             </SwiperSlide>
             <SwiperSlide>
               <img
                 className="h-[500px] w-full"
-                src="https://i.ibb.co/J2nP4zf/gallery-Two.jpg"
+                src="https://i.ibb.co/fC3K1Xg/gallery-One.jpg "
               />
             </SwiperSlide>
             <SwiperSlide>
