@@ -1,5 +1,5 @@
 import React from "react";
-import bannerImg from "../../assets/banner2nd.jpg";
+
 const Banner = () => {
   return (
     <div className="lg:px-20 md:px-6 px-4 md:py-12 py-8">
