@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
-
 import { Link } from "react-router-dom";
+import React, { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -20,18 +20,18 @@ const Navbar = () => {
   const menuLinks = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/"> Home</Link>
       </li>
       <li>
-        <Link to="/allToys">All Toys</Link>
+        <Link to="/allToys"> All Toys</Link>
       </li>
       {user && (
         <>
           <li>
-            <Link to="/myToys">My Toys</Link>
+            <Link to="/myToys"> My Toys</Link>
           </li>
           <li>
-            <Link to="/addAToy">Add A Toy</Link>
+            <Link to="/addAToy"> Add A Toy</Link>
           </li>
         </>
       )}
@@ -42,7 +42,7 @@ const Navbar = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-pink-50">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -70,7 +70,7 @@ const Navbar = () => {
           </div>
           <Link className="">
             <img
-              className="h-10"
+              className="h-12"
               src="https://www.brunswickshopping.com/wp-content/uploads/2017/10/toylmnd.svg"
               alt=""
             />
@@ -98,7 +98,7 @@ const Navbar = () => {
               )}
 
               <button
-                className="border p-2 rounded-xl border-orange font-semibold hover:bg-orange hover:text-white"
+                className="p-2 rounded-xl border-orange border-2 font-semibold hover:bg-pink-500 hover:text-white"
                 onClick={handleLogOut}
               >
                 Logout
@@ -106,7 +106,7 @@ const Navbar = () => {
             </>
           ) : (
             <Link
-              className="border p-2 rounded-xl border-orange font-semibold hover:bg-orange hover:text-white"
+              className="border p-2 rounded-xl border-orange font-semibold hover:bg-sky-400 hover:text-white"
               to="/signin"
             >
               Login
